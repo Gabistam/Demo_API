@@ -1,12 +1,6 @@
 {
   "version": 2,
   "name": "webcraft-api",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
   "headers": [
     {
       "source": "/data/(.*)",
