@@ -38,12 +38,12 @@ Vercel va maintenant :
 
 ## URL de votre API
 
-Après déploiement, votre API sera accessible à :
+Votre API est maintenant accessible à :
 
 ```
-Production : https://VOTRE-PROJET.vercel.app
-Projects   : https://VOTRE-PROJET.vercel.app/data/projects.json
-Courses    : https://VOTRE-PROJET.vercel.app/data/courses.json
+Production : https://demo-api-lime-seven.vercel.app
+Projects   : https://demo-api-lime-seven.vercel.app/data/projects.json
+Courses    : https://demo-api-lime-seven.vercel.app/data/courses.json
 ```
 
 ## Workflow CI/CD
@@ -54,7 +54,7 @@ Developer push → GitHub → Vercel Build → Deploy → Live
 
 ### Branches et déploiements
 
-- **main** → Production (https://VOTRE-PROJET.vercel.app)
+- **main** → Production (https://demo-api-lime-seven.vercel.app)
 - **autres branches** → Preview URLs automatiques
 - **Pull Requests** → Preview deployments avec commentaires GitHub
 

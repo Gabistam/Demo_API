@@ -4,9 +4,17 @@ API REST pédagogique pour l'apprentissage des requêtes AJAX en JavaScript.
 
 ## 📋 Description
 
-Cette API fournit des données de projets web fictifs pour permettre aux étudiants de pratiquer les requêtes AJAX, le filtrage de données et la manipulation du DOM sans avoir besoin de configurer un backend.
+Cette API fournit des données de projets web et de cours de formation fictifs pour permettre aux étudiants de pratiquer les requêtes AJAX, le filtrage de données et la manipulation du DOM sans avoir besoin de configurer un backend.
 
-## 🌐 Déploiement sur GitHub Pages
+## 🌐 API en Production
+
+**URL de production :** [https://demo-api-lime-seven.vercel.app](https://demo-api-lime-seven.vercel.app)
+
+### Endpoints disponibles :
+- **Projects API :** `https://demo-api-lime-seven.vercel.app/data/projects.json`
+- **Courses API :** `https://demo-api-lime-seven.vercel.app/data/courses.json`
+
+## 🚀 Déploiement sur GitHub Pages ou Vercel
 
 ### Étape 1 : Créer le repository
 
@@ -51,36 +59,75 @@ https://VOTRE-USERNAME.github.io/webcraft-api/
 
 ## 📡 Endpoints disponibles
 
-### Récupérer tous les projets
+### Projects API
+
+#### Récupérer tous les projets
 ```
-GET https://VOTRE-USERNAME.github.io/webcraft-api/data/projects.json
+GET https://demo-api-lime-seven.vercel.app/data/projects.json
 ```
 
 **Réponse :**
 ```json
 {
-  "projects": [...],
+  "projects": [8 projets web],
   "technologies": [...],
   "categories": [...]
 }
 ```
 
+### Courses API
+
+#### Récupérer tous les cours
+```
+GET https://demo-api-lime-seven.vercel.app/data/courses.json
+```
+
+**Réponse :**
+```json
+{
+  "courses": [10 cours de formation],
+  "categories": ["Frontend", "Backend", "Mobile", "DevOps"],
+  "levels": ["Débutant", "Intermédiaire", "Avancé"],
+  "technologies": [...]
+}
+```
+
 ## 💻 Exemples d'utilisation
 
-### Avec Fetch API
+### Avec Fetch API - Projets
 
 ```javascript
 async function loadProjects() {
     try {
-        const response = await fetch('https://VOTRE-USERNAME.github.io/webcraft-api/data/projects.json');
-        
+        const response = await fetch('https://demo-api-lime-seven.vercel.app/data/projects.json');
+
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
         }
-        
+
         const data = await response.json();
         console.log('Projets:', data.projects);
-        
+
+    } catch (error) {
+        console.error('Erreur:', error);
+    }
+}
+```
+
+### Avec Fetch API - Cours
+
+```javascript
+async function loadCourses() {
+    try {
+        const response = await fetch('https://demo-api-lime-seven.vercel.app/data/courses.json');
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('Cours:', data.courses);
+
     } catch (error) {
         console.error('Erreur:', error);
     }
@@ -92,9 +139,9 @@ async function loadProjects() {
 ```javascript
 async function loadProjects() {
     try {
-        const response = await axios.get('https://VOTRE-USERNAME.github.io/webcraft-api/data/projects.json');
+        const response = await axios.get('https://demo-api-lime-seven.vercel.app/data/projects.json');
         console.log('Projets:', response.data.projects);
-        
+
     } catch (error) {
         console.error('Erreur:', error);
     }
@@ -106,15 +153,35 @@ async function loadProjects() {
 ```javascript
 async function loadReactProjects() {
     try {
-        const response = await fetch('https://VOTRE-USERNAME.github.io/webcraft-api/data/projects.json');
+        const response = await fetch('https://demo-api-lime-seven.vercel.app/data/projects.json');
         const data = await response.json();
-        
-        const reactProjects = data.projects.filter(project => 
+
+        const reactProjects = data.projects.filter(project =>
             project.technologies.includes('React')
         );
-        
+
         console.log('Projets React:', reactProjects);
-        
+
+    } catch (error) {
+        console.error('Erreur:', error);
+    }
+}
+```
+
+### Filtrer par catégorie de cours
+
+```javascript
+async function loadFrontendCourses() {
+    try {
+        const response = await fetch('https://demo-api-lime-seven.vercel.app/data/courses.json');
+        const data = await response.json();
+
+        const frontendCourses = data.courses.filter(course =>
+            course.category === 'Frontend'
+        );
+
+        console.log('Cours Frontend:', frontendCourses);
+
     } catch (error) {
         console.error('Erreur:', error);
     }
@@ -138,6 +205,27 @@ async function loadReactProjects() {
   "description": "...",
   "features": ["Panier dynamique", "Paiement sécurisé", ...],
   "url": "https://..."
+}
+```
+
+### Objet Course
+
+```json
+{
+  "id": 1,
+  "title": "Maîtriser React 18",
+  "category": "Frontend",
+  "level": "Intermédiaire",
+  "duration": "24h",
+  "technologies": ["React", "JavaScript", "Hooks"],
+  "instructor": "Sophie Martin",
+  "price": 599,
+  "rating": 4.8,
+  "students": 342,
+  "image": "https://...",
+  "description": "...",
+  "modules": ["Composants fonctionnels", "Hooks avancés", ...],
+  "available": true
 }
 ```
 
