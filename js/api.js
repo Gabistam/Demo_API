@@ -18,41 +18,73 @@ document.addEventListener('DOMContentLoaded', () => {
 // Fonction pour tester un endpoint
 async function testEndpoint(type) {
     const baseURL = getBaseURL();
-    const url = `${baseURL}data/projects.json`;
-    
+    let url, result;
+
     try {
-        const response = await fetch(url);
-        
-        if (!response.ok) {
-            throw new Error(`Erreur HTTP: ${response.status}`);
+        // Déterminer l'URL selon le type
+        if (type.startsWith('projects-')) {
+            url = `${baseURL}data/projects.json`;
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            switch(type) {
+                case 'projects-all':
+                    result = data;
+                    break;
+                case 'projects-react':
+                    result = {
+                        projects: data.projects.filter(p => p.technologies.includes('React')),
+                        count: data.projects.filter(p => p.technologies.includes('React')).length
+                    };
+                    break;
+                case 'projects-ecommerce':
+                    result = {
+                        projects: data.projects.filter(p => p.category === 'E-commerce'),
+                        count: data.projects.filter(p => p.category === 'E-commerce').length
+                    };
+                    break;
+            }
+
+            console.log('✅ Résultat du test (Projects):', result);
+            alert(`✅ Requête réussie! ${result.projects ? result.projects.length : 'Tous les'} projet(s) récupéré(s). Consultez la console (F12) pour voir les données.`);
+
+        } else if (type.startsWith('courses-')) {
+            url = `${baseURL}data/courses.json`;
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            switch(type) {
+                case 'courses-all':
+                    result = data;
+                    break;
+                case 'courses-frontend':
+                    result = {
+                        courses: data.courses.filter(c => c.category === 'Frontend'),
+                        count: data.courses.filter(c => c.category === 'Frontend').length
+                    };
+                    break;
+                case 'courses-debutant':
+                    result = {
+                        courses: data.courses.filter(c => c.level === 'Débutant'),
+                        count: data.courses.filter(c => c.level === 'Débutant').length
+                    };
+                    break;
+            }
+
+            console.log('✅ Résultat du test (Courses):', result);
+            alert(`✅ Requête réussie! ${result.courses ? result.courses.length : 'Tous les'} cours récupéré(s). Consultez la console (F12) pour voir les données.`);
         }
-        
-        const data = await response.json();
-        
-        let result;
-        switch(type) {
-            case 'all':
-                result = data;
-                break;
-            case 'react':
-                result = {
-                    projects: data.projects.filter(p => p.technologies.includes('React')),
-                    count: data.projects.filter(p => p.technologies.includes('React')).length
-                };
-                break;
-            case 'ecommerce':
-                result = {
-                    projects: data.projects.filter(p => p.category === 'E-commerce'),
-                    count: data.projects.filter(p => p.category === 'E-commerce').length
-                };
-                break;
-            default:
-                result = data;
-        }
-        
-        console.log('✅ Résultat du test:', result);
-        alert(`✅ Requête réussie! ${result.projects ? result.projects.length : 'Tous les'} projet(s) récupéré(s). Consultez la console (F12) pour voir les données.`);
-        
+
     } catch (error) {
         console.error('❌ Erreur:', error);
         alert(`❌ Erreur: ${error.message}`);

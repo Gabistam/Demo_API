@@ -63,14 +63,16 @@
             <section id="endpoints" class="section">
                 <h2 class="section-title">🔌 Endpoints disponibles</h2>
 
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary-color);">📁 Projects API</h3>
+
                 <!-- All Projects -->
                 <div class="endpoint-card">
                     <div class="endpoint-header">
                         <span class="method method-get">GET</span>
                         <code class="endpoint-path">/data/projects.json</code>
                     </div>
-                    <p class="endpoint-description">Récupère tous les projets</p>
-                    <button class="btn btn-primary" onclick="testEndpoint('all')">Tester</button>
+                    <p class="endpoint-description">Récupère tous les projets web (8 projets disponibles)</p>
+                    <button class="btn btn-primary" onclick="testEndpoint('projects-all')">Tester</button>
                 </div>
 
                 <!-- By Technology (simulated) -->
@@ -79,9 +81,9 @@
                         <span class="method method-get">GET</span>
                         <code class="endpoint-path">?technology={tech}</code>
                     </div>
-                    <p class="endpoint-description">Filtrer par technologie (filtrage côté client)</p>
+                    <p class="endpoint-description">Filtrer les projets par technologie (filtrage côté client)</p>
                     <p class="example-text">Exemple: Filtrer les projets React</p>
-                    <button class="btn btn-primary" onclick="testEndpoint('react')">Tester avec React</button>
+                    <button class="btn btn-primary" onclick="testEndpoint('projects-react')">Tester avec React</button>
                 </div>
 
                 <!-- By Category (simulated) -->
@@ -90,9 +92,43 @@
                         <span class="method method-get">GET</span>
                         <code class="endpoint-path">?category={category}</code>
                     </div>
-                    <p class="endpoint-description">Filtrer par catégorie (filtrage côté client)</p>
+                    <p class="endpoint-description">Filtrer les projets par catégorie (filtrage côté client)</p>
                     <p class="example-text">Exemple: Filtrer les projets E-commerce</p>
-                    <button class="btn btn-primary" onclick="testEndpoint('ecommerce')">Tester E-commerce</button>
+                    <button class="btn btn-primary" onclick="testEndpoint('projects-ecommerce')">Tester E-commerce</button>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary-color);">🎓 Courses API</h3>
+
+                <!-- All Courses -->
+                <div class="endpoint-card">
+                    <div class="endpoint-header">
+                        <span class="method method-get">GET</span>
+                        <code class="endpoint-path">/data/courses.json</code>
+                    </div>
+                    <p class="endpoint-description">Récupère tous les cours de formation (10 cours disponibles)</p>
+                    <button class="btn btn-primary" onclick="testEndpoint('courses-all')">Tester</button>
+                </div>
+
+                <!-- By Category -->
+                <div class="endpoint-card">
+                    <div class="endpoint-header">
+                        <span class="method method-get">GET</span>
+                        <code class="endpoint-path">?category={category}</code>
+                    </div>
+                    <p class="endpoint-description">Filtrer les cours par catégorie (filtrage côté client)</p>
+                    <p class="example-text">Exemple: Filtrer les cours Frontend</p>
+                    <button class="btn btn-primary" onclick="testEndpoint('courses-frontend')">Tester Frontend</button>
+                </div>
+
+                <!-- By Level -->
+                <div class="endpoint-card">
+                    <div class="endpoint-header">
+                        <span class="method method-get">GET</span>
+                        <code class="endpoint-path">?level={level}</code>
+                    </div>
+                    <p class="endpoint-description">Filtrer les cours par niveau (filtrage côté client)</p>
+                    <p class="example-text">Exemple: Filtrer les cours Débutant</p>
+                    <button class="btn btn-primary" onclick="testEndpoint('courses-debutant')">Tester Débutant</button>
                 </div>
             </section>
 
@@ -184,6 +220,8 @@ async function loadReactProjects() {
             <!-- Response Structure -->
             <section class="section">
                 <h2 class="section-title">📦 Structure de la réponse</h2>
+
+                <h3 style="margin-bottom: 1rem; color: var(--secondary-color);">Projects API</h3>
                 <div class="card">
                     <pre><code>{
   "projects": [
@@ -203,6 +241,33 @@ async function loadReactProjects() {
   ],
   "technologies": ["HTML5", "CSS3", "JavaScript", ...],
   "categories": ["E-commerce", "Mobile", "Vitrine", ...]
+}</code></pre>
+                </div>
+
+                <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--secondary-color);">Courses API</h3>
+                <div class="card">
+                    <pre><code>{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Maîtriser React 18",
+      "category": "Frontend",
+      "level": "Intermédiaire",
+      "duration": "24h",
+      "technologies": ["React", "JavaScript", "Hooks"],
+      "instructor": "Sophie Martin",
+      "price": 599,
+      "rating": 4.8,
+      "students": 342,
+      "image": "...",
+      "description": "...",
+      "modules": ["..."],
+      "available": true
+    }
+  ],
+  "categories": ["Frontend", "Backend", "Mobile", "DevOps"],
+  "levels": ["Débutant", "Intermédiaire", "Avancé"],
+  "technologies": ["React", "Vue.js", "Angular", ...]
 }</code></pre>
                 </div>
             </section>
