@@ -41,9 +41,9 @@ Vercel va maintenant :
 Votre API est maintenant accessible à :
 
 ```
-Production : https://demo-api-lime-seven.vercel.app
-Projects   : https://demo-api-lime-seven.vercel.app/data/projects.json
-Courses    : https://demo-api-lime-seven.vercel.app/data/courses.json
+Production : https://webcraft-api.vercel.app
+Projects   : https://webcraft-api.vercel.app/data/projects.json
+Courses    : https://webcraft-api.vercel.app/data/courses.json
 ```
 
 ## Workflow CI/CD
@@ -54,7 +54,7 @@ Developer push → GitHub → Vercel Build → Deploy → Live
 
 ### Branches et déploiements
 
-- **main** → Production (https://demo-api-lime-seven.vercel.app)
+- **main** → Production (https://webcraft-api.vercel.app)
 - **autres branches** → Preview URLs automatiques
 - **Pull Requests** → Preview deployments avec commentaires GitHub
 

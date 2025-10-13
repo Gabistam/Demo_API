@@ -8,11 +8,11 @@ Cette API fournit des données de projets web et de cours de formation fictifs p
 
 ## 🌐 API en Production
 
-**URL de production :** [https://demo-api-lime-seven.vercel.app](https://demo-api-lime-seven.vercel.app)
+**URL de production :** [https://webcraft-api.vercel.app](https://webcraft-api.vercel.app)
 
 ### Endpoints disponibles :
-- **Projects API :** `https://demo-api-lime-seven.vercel.app/data/projects.json`
-- **Courses API :** `https://demo-api-lime-seven.vercel.app/data/courses.json`
+- **Projects API :** `https://webcraft-api.vercel.app/data/projects.json`
+- **Courses API :** `https://webcraft-api.vercel.app/data/courses.json`
 
 ## 🚀 Déploiement sur GitHub Pages ou Vercel
 
@@ -63,7 +63,7 @@ https://VOTRE-USERNAME.github.io/webcraft-api/
 
 #### Récupérer tous les projets
 ```
-GET https://demo-api-lime-seven.vercel.app/data/projects.json
+GET https://webcraft-api.vercel.app/data/projects.json
 ```
 
 **Réponse :**
@@ -79,7 +79,7 @@ GET https://demo-api-lime-seven.vercel.app/data/projects.json
 
 #### Récupérer tous les cours
 ```
-GET https://demo-api-lime-seven.vercel.app/data/courses.json
+GET https://webcraft-api.vercel.app/data/courses.json
 ```
 
 **Réponse :**
@@ -99,7 +99,7 @@ GET https://demo-api-lime-seven.vercel.app/data/courses.json
 ```javascript
 async function loadProjects() {
     try {
-        const response = await fetch('https://demo-api-lime-seven.vercel.app/data/projects.json');
+        const response = await fetch('https://webcraft-api.vercel.app/data/projects.json');
 
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
@@ -119,7 +119,7 @@ async function loadProjects() {
 ```javascript
 async function loadCourses() {
     try {
-        const response = await fetch('https://demo-api-lime-seven.vercel.app/data/courses.json');
+        const response = await fetch('https://webcraft-api.vercel.app/data/courses.json');
 
         if (!response.ok) {
             throw new Error(`Erreur HTTP: ${response.status}`);
@@ -139,7 +139,7 @@ async function loadCourses() {
 ```javascript
 async function loadProjects() {
     try {
-        const response = await axios.get('https://demo-api-lime-seven.vercel.app/data/projects.json');
+        const response = await axios.get('https://webcraft-api.vercel.app/data/projects.json');
         console.log('Projets:', response.data.projects);
 
     } catch (error) {
@@ -153,7 +153,7 @@ async function loadProjects() {
 ```javascript
 async function loadReactProjects() {
     try {
-        const response = await fetch('https://demo-api-lime-seven.vercel.app/data/projects.json');
+        const response = await fetch('https://webcraft-api.vercel.app/data/projects.json');
         const data = await response.json();
 
         const reactProjects = data.projects.filter(project =>
@@ -173,7 +173,7 @@ async function loadReactProjects() {
 ```javascript
 async function loadFrontendCourses() {
     try {
-        const response = await fetch('https://demo-api-lime-seven.vercel.app/data/courses.json');
+        const response = await fetch('https://webcraft-api.vercel.app/data/courses.json');
         const data = await response.json();
 
         const frontendCourses = data.courses.filter(course =>
